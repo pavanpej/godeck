@@ -1,7 +1,9 @@
 package main
 
+import "main/deck"
+
 func main() {
-	cards := newDeckFromFile("my_cards")
-  cards.shuffle()
-  cards.print()
+	cards := deck.NewDeckFromFile("my_cards")
+	cards.Shuffle()
+	cards.Print()
 }
