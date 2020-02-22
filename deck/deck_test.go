@@ -29,3 +29,18 @@ func TestNewDeck(t *testing.T) {
 		t.Errorf("Expected last card as 'Four of Clubs', but got %v", d[len(d)-1])
 	}
 }
+
+func TestSaveToFileAndNewDeckFromFile(t *testing.T) {
+	os.Remove("_decktesting")
+
+	d := NewDeck()
+	d.SaveToFile("_decktesting")
+
+	loadedDeck := NewDeckFromFile("_decktesting")
+
+	if len(loadedDeck) != 16 {
+		t.Errorf("Expected 16 cards in deck, got %v", len(loadedDeck))
+	}
+
+	os.Remove("_decktesting")
+}
